@@ -162,8 +162,7 @@ document.getElementById('InfoMessage').innerHTML = w_get_current_datetime();
 	test_no = 0;
 //var debugmsg = '';
 for (var i=0; i<10000; i++ ){
-    simpleStorage.get(function(e,r){
-   test_no += 1;  });  
+    simpleStorage.get(cb_inc_test_cnt);
 }
 ////var duration = Date.now() - mark_start;
 document.getElementById('InfoMessage2').innerHTML = w_get_current_datetime() + 'cnt ' + test_no ;
@@ -172,11 +171,10 @@ document.getElementById('InfoMessage2').innerHTML = w_get_current_datetime() + '
 test2_no = 0;
 	
 for (var i=0; i<10000; i++ ){
-    big_simpleStorage.getOwnder(function(e,r){
-   test2_no += 1;  });  
+    simpleStorage.get(cb_inc_test2_cnt);  
 }
 ////var duration = Date.now() - mark_start;
-document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + 'cnt1 ' + test_no + 'cnt1 ' + test2_no ;
+document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + ' cnt1 ' + test_no + ' cnt1 ' + test2_no ;
 	
 	
 	
@@ -191,6 +189,21 @@ document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + 
   });
   getValue();
 }
+	
+function cb_inc_test_no( e, r )
+{
+test_no += 1;
+document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + test_no + r ;
+}
+
+	
+function cb_inc_test2_no( e, r )
+{
+test2_no += 1;
+document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + test2_no + r ;
+}
+	
+	
 function getLink(addr) {
   return '<a target="_blank" href=https://testnet.etherscan.io/address/' + addr + '>' + addr +'</a>';
 }
