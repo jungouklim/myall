@@ -132,7 +132,7 @@ var big_abi =
 var big_simpleStorageContract;
 var big_simpleStorage;
 
-
+var test_no, test2_no;
 
 
 window.addEventListener('load', function() {
@@ -158,7 +158,8 @@ function startApp() {
 //// test  start ==============================================
 document.getElementById('InfoMessage').innerHTML = w_get_current_datetime();
 ////var mark_start = Date.now();
-var test_no = 0;
+
+	test_no = 0;
 //var debugmsg = '';
 for (var i=0; i<10000; i++ ){
     simpleStorage.get(function(e,r){
@@ -168,7 +169,7 @@ for (var i=0; i<10000; i++ ){
 document.getElementById('InfoMessage2').innerHTML = w_get_current_datetime() + 'cnt ' + test_no ;
 	
 
-var test2_no = 0;
+test2_no = 0;
 	
 for (var i=0; i<10000; i++ ){
     big_simpleStorage.getOwnder(function(e,r){
