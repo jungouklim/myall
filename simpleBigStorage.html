@@ -34,6 +34,10 @@ InfoMessage: <span id="InfoMessage"></span>
 InfoMessage2: <span id="InfoMessage2"></span>
  <br>
 InfoMessage3: <span id="InfoMessage3"></span>
+ <br>
+InfoMessage4: <span id="InfoMessage4"></span>
+ <br>
+InfoMessage5: <span id="InfoMessage5"></span>
 
 <!-- ====== -->  
 </body>
@@ -165,7 +169,7 @@ for (var i=0; i<10000; i++ ){
     simpleStorage.get(cb_inc_test_cnt);
 }
 ////var duration = Date.now() - mark_start;
-//document.getElementById('InfoMessage2').innerHTML = w_get_current_datetime() + 'cnt ' + test_no ;
+document.getElementById('InfoMessage2').innerHTML = w_get_current_datetime() + 'cnt ' + test_no ;
 	
 
 test2_no = 0;
@@ -174,7 +178,7 @@ for (var i=0; i<10000; i++ ){
     simpleStorage.get(cb_inc_test2_cnt);  
 }
 ////var duration = Date.now() - mark_start;
-//document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + ' cnt1 ' + test_no + ' cnt1 ' + test2_no ;
+document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + ' cnt1 ' + test_no + ' cnt1 ' + test2_no ;
 	
 	
 	
@@ -193,14 +197,16 @@ for (var i=0; i<10000; i++ ){
 function cb_inc_test_cnt( e, r )
 {
 test_no += 1;
-document.getElementById('InfoMessage2').innerHTML = w_get_current_datetime()  + test_no + r ;
+if ( test_no == 10000 )	
+document.getElementById('InfoMessage4').innerHTML = w_get_current_datetime()  + test_no + r ;
 }
 
 	
 function cb_inc_test2_cnt( e, r )
 {
 test2_no += 1;
-document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + test2_no + r ;
+	if ( test_no == 10000 )	
+document.getElementById('InfoMessage5').innerHTML = w_get_current_datetime()  + test2_no + r ;
 }
 	
 	
