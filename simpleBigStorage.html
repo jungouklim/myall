@@ -162,7 +162,7 @@ var test_no = 0;
 //var debugmsg = '';
 for (var i=0; i<10000; i++ ){
     simpleStorage.get(function(e,r){
-   test_no ++;  });  
+   test_no += 1;  });  
 }
 ////var duration = Date.now() - mark_start;
 document.getElementById('InfoMessage2').innerHTML = w_get_current_datetime() + 'cnt ' + test_no ;
@@ -172,7 +172,7 @@ test_no = 0;
 	
 for (var i=0; i<10000; i++ ){
     big_simpleStorage.get(function(e,r){
-   test_no ++;  });  
+   test_no += 1;  });  
 }
 ////var duration = Date.now() - mark_start;
 document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + 'cnt ' + test_no ;
