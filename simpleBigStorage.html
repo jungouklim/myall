@@ -165,21 +165,12 @@ document.getElementById('InfoMessage').innerHTML = w_get_current_datetime();
 
 	test_no = 0;
 //var debugmsg = '';
-for (var i=0; i<10000; i++ ){
-    simpleStorage.get(cb_inc_test_cnt);
-}
-////var duration = Date.now() - mark_start;
-document.getElementById('InfoMessage2').innerHTML = w_get_current_datetime() + 'cnt ' + test_no ;
 	
+    fc_simpleStorageGet();	
 
-test2_no = 0;
-	
-for (var i=0; i<10000; i++ ){
-    simpleStorage.get(cb_inc_test2_cnt);  
-}
-////var duration = Date.now() - mark_start;
-document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + ' cnt1 ' + test_no + ' cnt1 ' + test2_no ;
-	
+
+//test2_no = 0;
+//fc_simpleStorageGet();	
 	
 	
 //// test end =======================================================
@@ -194,11 +185,18 @@ document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime()  + 
   getValue();
 }
 	
+function fc_simpleStorageGet()
+{
+simpleStorage.get(cb_inc_test_cnt);
+}
+	
 function cb_inc_test_cnt( e, r )
 {
 test_no += 1;
 if ( test_no == 10000 )	
-document.getElementById('InfoMessage4').innerHTML = w_get_current_datetime()  + test_no + r ;
+    document.getElementById('InfoMessage4').innerHTML = w_get_current_datetime()  + test_no + r ;
+else
+    fc_simpleStorageGet();
 }
 
 	
