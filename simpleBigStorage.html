@@ -21,8 +21,7 @@
     <button onclick="getValue()"> Refresh</button> ( Current block: <span id="lastBlock"></span>)</li>
   <li><input id="newValue" type="text"><button onclick="setValue()">Store new value</button>
       <div id="result"></div></li>
-  <li>»õ °ªÀ» ÀúÀåÇÑ ÈÄ ÆÒµù Æ®·£Àè¼ÇÀÌ ºí·Ï¿¡ Æ÷ÇÔµÇ¸é ÀÚµ¿À¸·Î ÆäÀÌÁö°¡ ¾÷µ¥ÀÌÆ®µÉ °ÍÀÔ´Ï´Ù.</li>
-</ul>
+  </ul>
 
 <br><br>
 <p>
@@ -153,6 +152,8 @@ function startApp() {
   simpleStorageContract = web3.eth.contract(abi);
   simpleStorage = simpleStorageContract.at(contractAddress);
 
+  big_simpleStorageContract = web3.eth.contract(big_abi);
+  bigsimpleStorage = big_simpleStorageContract.at(big_contractAddress);
 
 
 
@@ -163,10 +164,21 @@ document.getElementById('InfoMessage').innerHTML = w_get_current_datetime();
 //var debugmsg = '';
 for (var i=0; i<10000; i++ ){
     simpleStorage.get(function(e,r){
-   test_no += r;  });  
+   test_no ++;  });  
 }
 ////var duration = Date.now() - mark_start;
-document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime();
+document.getElementById('InfoMessage2').innerHTML = w_get_current_datetime();
+	
+	
+for (var i=0; i<10000; i++ ){
+    big_simpleStorage.get(function(e,r){
+   test_no ++;  });  
+}
+////var duration = Date.now() - mark_start;
+document.getElementById('InfoMessage3').innerHTML = w_get_current_datetime();	
+	
+	
+	
 //// test end =======================================================
 
 
@@ -201,7 +213,7 @@ function setValue() {
     getValue();
     web3.eth.getTransaction(txid, function(e,r){
       if (r != null && r.blockNumber > 0) {
-        document.getElementById('pending').innerHTML = '(±â·ÏµÈ ºí·Ï: ' + r.blockNumber + ')';
+        document.getElementById('pending').innerHTML = '(ê¸°ë¡ëœ ë¸”ë¡: ' + r.blockNumber + ')';
         document.getElementById('pending').style.cssText ='color:green;';
         document.getElementById('storedData').style.cssText ='color:green; font-size:300%;';
         filter.stopWatching();
